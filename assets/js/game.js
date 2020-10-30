@@ -62,12 +62,18 @@ var fight = function(enemyName) {
       if (playerHealth <= 0) {
         window.alert(playerName + ' has died!');
         // leave while() loop if player is dead
-        break;
+        endGame()
       } else {
         window.alert(playerName + ' still has ' + playerHealth + ' health left.');
       }
     }
   };
+  //Function to start a new game
+  var startGame = function() {
+      //player stat reset
+      playerHealth = 100;
+      playerAttack = 10;
+      playerMoney = 10;
 for(var i = 0; i < enemyNames.length; i++){
     if (playerHealth > 0) {
         // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
@@ -89,5 +95,28 @@ for(var i = 0; i < enemyNames.length; i++){
         window.alert("You have lost your robot in battle! Game Over!");
         break;
       }
-
 }
+endGame;
+  };
+  //end of tart game F
+  // start of end game F
+  var endGame = function() {
+      //if player still alive, player wins!
+      if (playerHealth > 0 ) {
+          window.alert("Great job, you've suvived the game! you now have a score of " + playerMoney + ".")
+      }
+      else{
+      window.alert("You've lost your robot in battle.");
+      }
+      //asking player if they want to play again.
+      var playAgainConfirm = window.confirm("would you like to play again?");
+      if (playAgainConfirm) {
+          //restart the game
+          startGame();
+      }
+      else {
+        window.alert("Thak you or playing Robot Gladiators! come back soon!");
+      }
+  };
+  //end of end game F
+  startGame();
